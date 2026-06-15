@@ -18,7 +18,7 @@ export default async function ProductDetailPage({
   const [{ data: product }, { data: { user } }] = await Promise.all([
     supabase
       .from('products')
-      .select('*, seller:profiles!products_user_id_fkey(nickname)')
+      .select('*, seller:profiles!products_user_id_profiles_fkey(nickname)')
       .eq('id', id)
       .single(),
     supabase.auth.getUser(),

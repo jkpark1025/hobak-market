@@ -20,7 +20,7 @@ export default async function ProductsPage({
     (() => {
       let query = supabase
         .from('products')
-        .select('id, title, price, category, status, created_at, seller:profiles!products_user_id_fkey(nickname)')
+        .select('id, title, price, category, status, created_at, seller:profiles!products_user_id_profiles_fkey(nickname)')
         .order('created_at', { ascending: false })
       if (category && category !== '전체') {
         query = query.eq('category', category)
